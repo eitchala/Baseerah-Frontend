@@ -896,7 +896,7 @@
                 formData.append('strip_tashkeel', 'false');
                 formData.append('mode', 'ocr');
 
-                response = await fetch('https://baseerah-backend.onrender.com', {
+                response = await fetch('https://baseerah-backend.onrender.com/convert/pdf', {
                   method: 'POST',
                   body: formData
                 });
@@ -915,7 +915,7 @@
               formData.append('file', file);
               formData.append('strip_tashkeel', 'false');
 
-              const response = await fetch('https://baseerah-backend.onrender.com', {
+              const response = await fetch('https://baseerah-backend.onrender.com/convert/image', {
                 method: 'POST',
                 body: formData
               });
@@ -960,7 +960,7 @@
         document.getElementById('step3').classList.add('active');
 
         try {
-          const response = await fetch('https://baseerah-backend.onrender.com', {
+          const response = await fetch('https:/baseerah-backend.onrender.com/convert/text', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
