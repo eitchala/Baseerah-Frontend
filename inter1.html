@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baseerah - بصيرة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<style>
+@font-face {
+  font-family: 'ZainFont';
+  src: url('alfont_com_zainpcv2-VF-2.ttf') format('truetype');
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{
+  scroll-behavior:smooth;
+  font-size:20px;
+}
+
+body{
+  font-family:'ZainFont', sans-serif;
+  background:
+    radial-gradient(circle at 18% 15%, rgba(183,255,204,.30), transparent 36%),
+    radial-gradient(circle at 84% 30%, rgba(15,90,80,.10), transparent 32%),
+    #f5fbf9;
+  color:#12463f;
+  min-height:100vh;
+}
+
+body,button,input,textarea,select,option,h1,h2,h3,h4,h5,h6,p,span,div,a,strong{
+  font-family:'ZainFont', sans-serif !important;
+}
+
+button,input,textarea,select{font-family:inherit}
+button{cursor:pointer;transition:.25s}
+button:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(15,90,80,.16)}
+
+.page{display:none;min-height:100vh;animation:fade .35s ease}
+.page.active{display:block}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.navbar{
+  height:76px;
+  background:rgba(255,255,255,.78);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 clamp(28px, 7vw, 130px);
+  border-bottom:1px solid rgba(218,232,229,.75);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;color:#155a50;font-size:22px;letter-spacing:.2px}
+.logo{width:34px;height:34px;border-radius:50%;background:#155a50;position:relative}
+.logo:before{content:"";position:absolute;width:22px;height:12px;background:#fff;border-radius:50%;left:6px;top:11px}
+.logo:after{content:"";position:absolute;width:8px;height:8px;background:#155a50;border-radius:50%;left:13px;top:13px}
+.nav-links{display:flex;align-items:center;gap:12px}
+.nav-btn,.icon-btn,.language{
+  border:0;
+  background:rgba(243,247,246,.9);
+  color:#155a50;
+  border-radius:999px;
+  padding:10px 18px;
+  font-weight:900;
+  font-size:18px;
+}
+.nav-btn.active{background:#155a50;color:#fff}
+
+.hero{
+  min-height:calc(100vh - 76px);
+  display:grid;
+  grid-template-columns:minmax(430px,1fr) minmax(360px,.9fr);
+  align-items:center;
+  gap:clamp(42px,7vw,110px);
+  padding:clamp(62px,8vw,110px) clamp(48px,9vw,165px);
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  width:760px;
+  height:760px;
+  border-radius:50%;
+  right:-270px;
+  top:50%;
+  transform:translateY(-50%);
+  background:radial-gradient(circle, rgba(183,255,204,.46), rgba(183,255,204,0) 68%);
+  filter:blur(18px);
+  pointer-events:none;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:430px;
+  height:430px;
+  border:1px solid rgba(216,235,230,.9);
+  border-radius:50%;
+  left:-120px;
+  bottom:-160px;
+  opacity:.9;
+}
+
+.hero-text{
+  position:relative;
+  z-index:1;
+  max-width:660px;
+  justify-self:start;
+  padding-inline-start:clamp(10px,2vw,35px);
+}
+
+.hero-text:before{
+  content:"";
+  position:absolute;
+  inset:-35px -50px -30px auto;
+  width:min(760px,94vw);
+  border-radius:46% 54% 48% 52%;
+  background:radial-gradient(circle at 62% 38%, rgba(183,255,204,.62) 0, rgba(183,255,204,.26) 35%, rgba(183,255,204,0) 72%);
+  filter:blur(14px);
+  opacity:.9;
+  z-index:-1;
+  pointer-events:none;
+}
+
+.badge{
+  display:inline-block;
+  background:rgba(233,246,242,.95);
+  color:#155a50;
+  padding:10px 22px;
+  border-radius:999px;
+  font-weight:900;
+  margin-bottom:24px;
+  font-size:18px;
+  border:1px solid rgba(209,232,226,.85);
+}
+
+.hero h1{
+  font-size:clamp(50px,6vw,84px);
+  font-weight:900;
+  margin-bottom:18px;
+  color:#155a50;
+  letter-spacing:-1px;
+  line-height:1.12;
+}
+
+.hero h2{
+  font-size:clamp(25px,3vw,38px);
+  font-weight:900;
+  margin-bottom:22px;
+  color:#155a50;
+  line-height:1.55;
+}
+
+.hero p{
+  font-size:clamp(18px,1.6vw,22px);
+  line-height:2.05;
+  color:#4a5a57;
+  max-width:620px;
+  margin-bottom:36px;
+}
+
+.actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.main-btn{
+  border:0;
+  border-radius:18px;
+  background:linear-gradient(135deg,#0f5a50,#0d463f);
+  color:#fff;
+  font-size:19px;
+  font-weight:900;
+  padding:16px 40px;
+  box-shadow:0 16px 30px rgba(15,90,80,.22);
+}
+.secondary-btn{
+  border:1px solid #dbe8e5;
+  border-radius:18px;
+  background:rgba(255,255,255,.9);
+  color:#155a50;
+  font-size:18px;
+  font-weight:900;
+  padding:15px 32px;
+}
+
+.hero-card{
+  background:rgba(255,255,255,.84);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-radius:36px;
+  min-height:445px;
+  box-shadow:0 26px 80px rgba(18,70,63,.13);
+  border:1px solid rgba(233,238,238,.9);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  z-index:1;
+  justify-self:center;
+  width:min(100%,530px);
+}
+
+.illustration{display:flex;align-items:center;justify-content:center;gap:34px}
+.paper,.braille-card{
+  width:132px;
+  height:158px;
+  border-radius:24px;
+  box-shadow:0 16px 38px rgba(18,70,63,.10);
+  background:#edf8f4;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#155a50;
+  font-size:66px;
+  font-weight:900;
+}
+.braille-card{
+  background:#fff;
+  display:grid;
+  grid-template-columns:repeat(3,12px);
+  gap:14px 20px;
+  padding:36px;
+}
+.dot{width:12px;height:12px;border-radius:50%;background:#155a50}
+.arrow{font-size:56px;color:#456c66}
+
+.container{padding:38px clamp(24px,6vw,90px) 46px;max-width:1400px;margin:auto}
+.steps{display:flex;justify-content:center;align-items:flex-start;gap:80px;margin:12px 0 32px;direction:rtl}
+.step{text-align:center;color:#9aa5a3;font-size:16px;position:relative;min-width:100px}
+.step:not(:last-child):after{content:"";position:absolute;top:15px;left:-94px;width:110px;height:2px;background:#e2e7e6}
+.num{width:34px;height:34px;border-radius:50%;margin:0 auto 8px;background:#d7dddc;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900}
+.step.active{color:#155a50;font-weight:900}.step.active .num{background:#155a50}
+
+.converter-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.panel,.output-panel,.form-card,.contact-card{
+  border:1px solid rgba(233,238,238,.95);
+  border-radius:26px;
+  padding:28px;
+  background:rgba(255,255,255,.92);
+  box-shadow:0 16px 42px rgba(18,70,63,.07);
+}
+.panel h3,.output-panel h3,.form-card h3,.contact-card h3{
+  font-size:28px;
+  text-align:center;
+  margin-bottom:8px;
+  color:#164d45;
+}
+.sub{font-size:18px;color:#8a9694;text-align:center;margin-bottom:18px}
+
+.tabs{display:flex;gap:10px;justify-content:center;margin-bottom:18px}
+.tab{padding:10px 20px;border-radius:12px;border:1px solid #ecf0ef;color:#6f7b78;font-size:18px;font-weight:900;background:#fff}
+.tab.active{background:#155a50;color:#fff}
+
+.upload-box{
+  height:245px;
+  border-radius:18px;
+  border:2px dashed #dce8e5;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:#155a50;
+  text-align:center;
+  font-size:18px;
+  line-height:2;
+  background:#fbfdfc;
+}
+.upload-box.drag{background:#eaf8f4;border-color:#155a50}
+.upload-icon{width:54px;height:42px;border-radius:22px;background:#155a50;color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px}
+
+.text-input{
+  width:100%;
+  height:245px;
+  border:1px solid #e1e8e6;
+  border-radius:18px;
+  padding:16px;
+  resize:none;
+  color:#445;
+  outline:none;
+  line-height:1.9;
+  font-size:18px;
+  display:none;
+}
+.empty-result,.result-text{
+  height:365px;
+  background:#f8faf9;
+  border:1px solid #edf0ef;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  color:#99a5a2;
+  font-size:18px;
+  text-align:center;
+  padding:18px;
+  line-height:2;
+  overflow:auto;
+}
+.result-text{align-items:flex-start;text-align:right;color:#455;display:block;background:#fff}
+.lines{font-size:56px;color:#b7c0bd;margin-bottom:12px;line-height:1}
+.wide-btn{
+  width:100%;
+  height:56px;
+  border:0;
+  border-radius:18px;
+  background:#155a50;
+  color:#fff;
+  font-size:20px;
+  font-weight:900;
+  margin:24px 0;
+}
+.braille-output{
+  margin:18px 0;
+  height:92px;
+  background:#ecf8f3;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  direction:ltr;
+  overflow:auto;
+  padding:0 20px;
+}
+.braille-cell{display:grid;grid-template-columns:repeat(2,8px);grid-template-rows:repeat(3,8px);gap:7px}
+.braille-cell span{width:8px;height:8px;border-radius:50%;background:#1b6a5e;opacity:.25}
+.braille-cell span.on{opacity:1}
+
+.download-row{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:12px}
+.small-btn{height:46px;border-radius:13px;border:1px solid #edf0ef;background:#fff;color:#155a50;font-size:16px;font-weight:900}
+.small-btn.primary{background:#155a50;color:#fff;border-color:#155a50}
+
+.feedback-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:start}
+.page-title{text-align:center;font-size:38px;margin:20px 0 8px;color:#155a50}
+.page-subtitle{text-align:center;color:#889391;margin-bottom:28px;font-size:19px}
+.field,.textarea{width:100%;height:50px;margin-bottom:13px;border:1px solid #edf0ef;border-radius:14px;padding:0 14px;color:#6d7976;outline:none;background:#fff;font-size:18px}
+.textarea{height:145px;padding-top:14px;resize:none}
+.submit-btn{width:100%;height:52px;border-radius:14px;border:0;background:#155a50;color:#fff;font-size:18px;font-weight:900;box-shadow:0 8px 16px rgba(15,90,80,.24)}
+.contact-row{min-height:72px;border-radius:16px;background:#fbfcfc;border:1px solid #f0f2f2;display:flex;align-items:center;gap:12px;padding:14px 16px;margin-bottom:12px;text-align:right}
+.contact-icon{font-size:24px;color:#155a50}
+.contact-row strong{display:block;font-size:16px;color:#155a50;margin-bottom:4px}
+.contact-row span{display:block;font-size:15px;color:#8a9694}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);background:#155a50;color:#fff;padding:13px 24px;border-radius:14px;font-weight:900;box-shadow:0 12px 28px rgba(18,70,63,.22);transition:.35s;z-index:99}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.footer{text-align:center;padding:18px;color:#7b8885;background:#eaf4f1;margin-top:30px}
+
+
+.creative-card{
+  background:linear-gradient(145deg, rgba(255,255,255,.42), rgba(255,255,255,.14));
+  border:1px solid rgba(255,255,255,.62);
+  box-shadow:
+    0 30px 90px rgba(18,70,63,.16),
+    inset 0 1px 0 rgba(255,255,255,.65);
+  overflow:hidden;
+  isolation:isolate;
+}
+
+.creative-card:before{
+  content:"";
+  position:absolute;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(183,255,204,.75), transparent 68%);
+  top:-80px;
+  right:-70px;
+  filter:blur(10px);
+  animation:softFloat 6s ease-in-out infinite;
+  z-index:-1;
+}
+
+.creative-card:after{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(21,90,80,.20), transparent 70%);
+  bottom:-70px;
+  left:-60px;
+  filter:blur(8px);
+  animation:softFloat 7s ease-in-out infinite reverse;
+  z-index:-1;
+}
+
+.motion-graphic{
+  position:relative;
+  z-index:2;
+  width:88%;
+  min-height:310px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:30px;
+}
+
+.glass-document,
+.glass-braille{
+  width:135px;
+  height:170px;
+  border-radius:28px;
+  background:rgba(255,255,255,.54);
+  border:1px solid rgba(255,255,255,.72);
+  box-shadow:
+    0 18px 45px rgba(18,70,63,.12),
+    inset 0 1px 0 rgba(255,255,255,.9);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  animation:floatCard 4.5s ease-in-out infinite;
+}
+
+.glass-braille{
+  display:grid;
+  grid-template-columns:repeat(2,18px);
+  grid-template-rows:repeat(3,18px);
+  gap:18px 22px;
+  animation-delay:.5s;
+}
+
+.doc-letter{
+  font-size:74px;
+  font-weight:900;
+  color:#155a50;
+  transform:translateY(-12px);
+}
+
+.doc-line{
+  position:absolute;
+  right:24px;
+  height:7px;
+  border-radius:99px;
+  background:rgba(21,90,80,.16);
+}
+
+.line-1{bottom:42px;width:78px}
+.line-2{bottom:28px;width:58px}
+.line-3{bottom:14px;width:88px}
+
+.flow-arrow{
+  width:96px;
+  height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+
+.flow-arrow span{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:#155a50;
+  opacity:.35;
+  animation:flowPulse 1.4s ease-in-out infinite;
+}
+
+.flow-arrow span:nth-child(2){animation-delay:.18s}
+.flow-arrow span:nth-child(3){animation-delay:.36s}
+
+.braille-dot{
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:#155a50;
+  opacity:.18;
+  box-shadow:0 0 0 rgba(21,90,80,0);
+  animation:dotGlow 2.2s ease-in-out infinite;
+}
+
+.braille-dot.active{
+  opacity:1;
+  box-shadow:0 0 18px rgba(21,90,80,.25);
+}
+
+.braille-dot:nth-child(2){animation-delay:.2s}
+.braille-dot:nth-child(3){animation-delay:.4s}
+.braille-dot:nth-child(4){animation-delay:.6s}
+.braille-dot:nth-child(5){animation-delay:.8s}
+.braille-dot:nth-child(6){animation-delay:1s}
+
+.orbit{
+  position:absolute;
+  border:1px solid rgba(21,90,80,.14);
+  border-radius:50%;
+  z-index:1;
+  animation:rotateOrbit 14s linear infinite;
+}
+
+.orbit-one{
+  width:330px;
+  height:330px;
+}
+
+.orbit-two{
+  width:420px;
+  height:420px;
+  animation-duration:20s;
+  animation-direction:reverse;
+}
+
+.orbit:before{
+  content:"";
+  position:absolute;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#155a50;
+  top:34px;
+  right:68px;
+  box-shadow:0 0 18px rgba(21,90,80,.35);
+}
+
+.floating-chip{
+  position:absolute;
+  z-index:3;
+  padding:10px 16px;
+  border-radius:999px;
+  background:rgba(255,255,255,.58);
+  border:1px solid rgba(255,255,255,.75);
+  color:#155a50;
+  font-size:16px;
+  font-weight:900;
+  box-shadow:0 14px 30px rgba(18,70,63,.10);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  animation:chipFloat 4.8s ease-in-out infinite;
+}
+
+.chip-text{
+  top:72px;
+  right:48px;
+}
+
+.chip-braille{
+  bottom:76px;
+  left:52px;
+  direction:ltr;
+  animation-delay:.7s;
+}
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 36px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 800;
+      color: white;
+
+      background: #155a50;
+      transition: 0.5s;
+      box-shadow: 6px 6px 0 #0f3d36;
+      transform: skewX(-15deg);
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta:hover {
+      box-shadow: 10px 10px 0 #7fe0c6; 
+    }
+
+    .cta .span {
+      transform: skewX(15deg);
+    }
+
+    .cta .second {
+      width: 22px;
+      margin-left: 25px;
+      position: relative;
+    }
+
+    .cta .one,
+    .cta .two,
+    .cta .three {
+      fill: white;
+      transition: 0.4s;
+    }
+
+    .cta .one {
+      transform: translateX(-60%);
+    }
+
+    .cta .two {
+      transform: translateX(-30%);
+    }
+
+    .cta:hover .one,
+    .cta:hover .two {
+      transform: translateX(0);
+    }
+
+    .cta:hover .three,
+    .cta:hover .one,
+    .cta:hover .two {
+      animation: color_anim 1s infinite;
+    }
+
+    @keyframes color_anim {
+      0% { fill: white; }
+      50% { fill: #7fe0c6; }
+      100% { fill: white; }
+    }
+.main-btn,
+.secondary-btn{
+  position:relative;
+  overflow:hidden;
+}
+
+.main-btn{
+  border-radius:999px;
+  background:
+    linear-gradient(135deg, #0d463f 0%, #155a50 45%, #1f7d6f 100%);
+  box-shadow:
+    0 16px 36px rgba(15,90,80,.28),
+    inset 0 1px 0 rgba(255,255,255,.25);
+}
+
+.main-btn:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg, transparent 0%, rgba(255,255,255,.34) 45%, transparent 70%);
+  transform:translateX(120%);
+  transition:.55s;
+}
+
+.main-btn:hover:before{
+  transform:translateX(-120%);
+}
+
+.secondary-btn{
+  border:1px solid rgba(21,90,80,.14);
+  background:rgba(255,255,255,.68);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  box-shadow:0 12px 28px rgba(18,70,63,.08);
+}
+
+.secondary-btn:hover{
+  background:#fff;
+  border-color:rgba(21,90,80,.24);
+}
+
+    .support-section{
+      position:relative;
+      padding-top:60px;
+    }
+
+    .support-section:before{
+      content:"";
+      position:absolute;
+      width:520px;
+      height:520px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(183,255,204,.45), transparent 68%);
+      right:-180px;
+      top:40px;
+      filter:blur(20px);
+      z-index:-1;
+    }
+
+    .support-header{
+      text-align:center;
+      margin-bottom:34px;
+    }
+
+    .support-glass{
+      background:rgba(255,255,255,.68);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      border:1px solid rgba(255,255,255,.75);
+      box-shadow:0 24px 70px rgba(18,70,63,.11);
+    }
+
+    .field,
+    .textarea{
+      background:rgba(255,255,255,.82);
+      border:1px solid rgba(218,232,229,.9);
+      transition:.25s;
+    }
+
+    .field:focus,
+    .textarea:focus{
+      border-color:#155a50;
+      box-shadow:0 0 0 4px rgba(21,90,80,.08);
+    }
+
+    .support-cta{
+      width:100%;
+      justify-content:center;
+      margin-top:8px;
+    }
+
+    .secondary-support{
+      margin-top:18px;
+      background:#155a50;
+    }
+
+    .contact-row{
+      transition:.25s;
+    }
+
+    .contact-row:hover{
+      transform:translateY(-3px);
+      box-shadow:0 12px 26px rgba(18,70,63,.08);
+    }
+    
+@keyframes floatCard{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-14px) rotate(1.2deg)}
+}
+
+@keyframes flowPulse{
+  0%,100%{transform:scale(.75);opacity:.28}
+  50%{transform:scale(1.25);opacity:1}
+}
+
+@keyframes dotGlow{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.16)}
+}
+
+@keyframes rotateOrbit{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+
+@keyframes chipFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+
+@keyframes softFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(22px)}
+}
+
+
+@media(max-width:900px){
+  .navbar{padding:0 20px}
+  .hero{grid-template-columns:1fr;padding:46px 24px;text-align:center}
+  .hero-text{max-width:100%;justify-self:center;padding-inline-start:0}
+  .actions{justify-content:center}
+  .hero-card{width:100%;min-height:320px}
+  .paper,.braille-card{width:105px;height:130px;font-size:50px}
+  .container{padding:24px 18px}
+  .converter-grid,.feedback-layout{grid-template-columns:1fr}
+  .download-row{grid-template-columns:1fr}
+  .steps{gap:20px}
+  .step:after{display:none}
+}
+</style>
+
+</head>
+<body>
+  <nav class="navbar">
+    <div class="brand"><span>Baseerah - بصيرة</span></div>
+    <div class="nav-links">
+      <button class="nav-btn active" onclick="showPage('home', this)">الرئيسية</button>
+      <button class="nav-btn" onclick="showPage('convert')">التحويل</button>
+      <button class="nav-btn" onclick="showPage('support')">الدعم</button>
+    </div>
+  </nav>
+
+  <section id="home" class="page active">
+    <div class="hero">
+      <div class="hero-text">
+        <span class="badge">منصة عربية لتحويل النص إلى برايل</span>
+        <h1>بَـــصــــيـــــــــــرة</h1>
+        <h2>تحويل النص العربي إلى برايل بسهولة ودقة</h2>
+        <p>نساعد المكفوفين وضعاف البصر على الوصول إلى المعرفة من خلال تحويل النصوص العربية إلى برايل مع واجهة سهلة ومناسبة للاستخدام.</p>
+        <div class="actions">
+            <button class="cta" onclick="showPage('convert')">
+              <span class="span">ابدأ التحويل</span>
+
+              <span class="second">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                  <path class="one" d="M5 12h14"></path>
+                  <path class="two" d="M13 5l7 7-7 7"></path>
+                  <path class="three" d=""></path>
+                </svg>
+              </span>
+            </button>
+            <button class="cta" onclick="showPage('support')">
+              <span class="span">الملاحظات والدعم</span>
+
+              <span class="second">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                  <path class="one" d="M5 12h14"></path>
+                  <path class="two" d="M13 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </button>
+        </div>
+      </div>
+      <div class="hero-card creative-card">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="floating-chip chip-text">أهلًا بكم فــي بـصيرة</div>
+        <div class="floating-chip chip-braille">⠃⠎⠊⠗⠁</div>
+
+        <div class="motion-graphic">
+          <div class="glass-document">
+            <span class="doc-letter">أ</span>
+            <span class="doc-line line-1"></span>
+            <span class="doc-line line-2"></span>
+            <span class="doc-line line-3"></span>
+          </div>
+
+          <div class="flow-arrow">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="glass-braille">
+            <div class="braille-dot active"></div>
+            <div class="braille-dot"></div>
+            <div class="braille-dot active"></div>
+            <div class="braille-dot active"></div>
+            <div class="braille-dot"></div>
+            <div class="braille-dot active"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="convert" class="page">
+    <div class="container">
+      <div class="steps">
+        <div class="step active" id="step1"><div class="num">1</div>إدخال النص</div>
+        <div class="step" id="step2"><div class="num">2</div>تحويل</div>
+        <div class="step" id="step3"><div class="num">3</div>النتيجة</div>
+      </div>
+      <div class="converter-grid">
+        <div class="panel">
+          <h3>إدخال النص</h3>
+          <p class="sub">اختر طريقة الإدخال</p>
+          <div class="tabs">
+            <button class="tab active" onclick="setInputMode('file', this)">رفع ملف</button>
+            <button class="tab" onclick="setInputMode('direct', this)">نص مباشر</button>
+          </div>
+          <div class="upload-box" id="uploadBox" onclick="document.getElementById('fileInput').click()">
+            <strong>اسحب الملف هنا</strong>
+          </div>
+          <input id="fileInput" type="file" hidden onchange="handleFile(event)">
+          <textarea id="directText" class="text-input" placeholder="اكتب النص العربي هنا..."></textarea>
+        </div>
+        <div class="panel">
+          <h3>النص المستخرج</h3>
+          <div id="extractedText" class="empty-result">لا يوجد نص</div>
+        </div>
+      </div>
+      <button class="wide-btn" onclick="convertToBraille()">تحويل إلى برايل</button>
+      <div class="output-panel">
+        <div class="braille-output" id="brailleOutput"></div>
+      </div>
+    </div>
+  </section>
+  <section id="support" class="page">
+    <div class="container support-section">
+      <div class="support-header">
+        <span class="badge">الدعم والملاحظات</span>
+        <h1 class="page-title">كيف نقدر نساعدك؟</h1>
+        <p class="page-subtitle">
+          شاركنا ملاحظاتك أو أي مشكلة تواجهك، فريق بصيرة يعمل على تحسين التجربة باستمرار.
+        </p>
+      </div>
+
+      <div class="feedback-layout">
+        <div class="form-card support-glass">
+          <h3>إرسال ملاحظة</h3>
+          <p class="sub">نرحب بملاحظاتك واقتراحاتك لتطوير منصة بصيرة</p>
+
+          <input class="field" id="name" type="text" placeholder="الاسم">
+          <input class="field" id="email" type="email" placeholder="البريد الإلكتروني">
+
+          <select class="field" id="type">
+            <option>اختر نوع الملاحظة</option>
+            <option>مشكلة تقنية</option>
+            <option>اقتراح تحسين</option>
+            <option>استفسار</option>
+          </select>
+
+          <textarea class="textarea" id="message" placeholder="اكتب ملاحظتك هنا..."></textarea>
+
+          <button class="cta support-cta" onclick="sendFeedback()">
+            <span class="span">إرسال الملاحظة</span>
+            <span class="second">
+              <svg width="24" height="24" viewBox="0 0 24 24">
+                <path class="one" d="M5 12h14" stroke="white" stroke-width="2" fill="none"/>
+                <path class="two" d="M13 5l7 7-7 7" stroke="white" stroke-width="2" fill="none"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+
+        <div class="contact-card support-glass">
+          <h3>تواصل معنا</h3>
+          <p class="sub">للدعم الفني أو الاستفسارات</p>
+
+          <div class="contact-row">
+            <div class="contact-icon">✉</div>
+            <div>
+              <strong>البريد الإلكتروني</strong>
+              <span>support@baseerah.com</span>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-icon">💡</div>
+            <div>
+              <strong>اقتراحات التطوير</strong>
+              <span>نستقبل أفكارك لتحسين الخدمة</span>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-icon">⚙</div>
+            <div>
+              <strong>الدعم التقني</strong>
+              <span>مساعدة في التحويل أو رفع الملفات</span>
+            </div>
+          </div>
+
+          <button class="cta support-cta secondary-support" onclick="showPage('convert')">
+            <span class="span">العودة للتحويل</span>
+            <span class="second">
+              <svg width="24" height="24" viewBox="0 0 24 24">
+                <path class="one" d="M5 12h14" stroke="white" stroke-width="2" fill="none"/>
+                <path class="two" d="M13 5l7 7-7 7" stroke="white" stroke-width="2" fill="none"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">جميع الحقوق محفوظة © Baseerah 2025</footer>
+  </section>
+
+  
+<script>
+let currentText = '';
+let currentBraille = '';
+
+function showPage(id, btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  const map = {home:0, convert:1, support:2};
+  const navBtns = document.querySelectorAll('.nav-btn');
+  if(btn){ btn.classList.add('active'); }
+  else if(navBtns[map[id]]){ navBtns[map[id]].classList.add('active'); }
+
+  window.scrollTo(0,0);
+}
+
+function toast(msg){
+  const t=document.getElementById('toast');
+  if(!t) return;
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+function setInputMode(mode, btn){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+
+  const upload=document.getElementById('uploadBox');
+  const text=document.getElementById('directText');
+
+  if(mode==='direct'){
+    upload.style.display='none';
+    text.style.display='block';
+    text.focus();
+  }else{
+    upload.style.display='flex';
+    text.style.display='none';
+  }
+}
+
+async function pasteText(btn){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.getElementById('uploadBox').style.display='none';
+  const text=document.getElementById('directText');
+  text.style.display='block';
+
+  try{
+    const clip=await navigator.clipboard.readText();
+    text.value=clip || 'مرحبًا بكم في بصيرة';
+    updateExtracted(text.value);
+    toast('تم لصق النص');
+  }catch(e){
+    text.value='مرحبًا بكم في بصيرة';
+    updateExtracted(text.value);
+    toast('تم إدخال نص تجريبي');
+  }
+}
+
+function handleFile(e){
+  const file=e.target.files[0];
+  if(!file) return;
+
+  const label=document.getElementById('fileLabel');
+  if(label) label.textContent='تم اختيار الملف: '+file.name;
+
+  if(file.type==='text/plain'){
+    const reader=new FileReader();
+    reader.onload=()=>updateExtracted(reader.result);
+    reader.readAsText(file);
+  }else{
+    updateExtracted('تم رفع الملف: '+file.name+'\nهذه نسخة تجريبية لاستخراج النص من الملفات داخل الواجهة.');
+  }
+
+  toast('تم رفع الملف بنجاح');
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  const directText=document.getElementById('directText');
+  if(directText){
+    directText.addEventListener('input',e=>updateExtracted(e.target.value));
+  }
+});
+
+function updateExtracted(text){
+  currentText=text.trim();
+  const box=document.getElementById('extractedText');
+
+  if(!currentText){
+    box.className='empty-result';
+    box.innerHTML='<div class="lines">≡</div><span>لا يوجد نص حتى الآن</span>';
+    return;
+  }
+
+  box.className='result-text';
+  box.textContent=currentText;
+}
+
+function convertToBraille(){
+  const direct=document.getElementById('directText');
+  if(direct && direct.style.display==='block') updateExtracted(direct.value);
+
+  if(!currentText){
+    toast('أدخل نص أو ارفع ملف أولًا');
+    return;
+  }
+
+  document.getElementById('step2').classList.add('active');
+
+  const chars=currentText.replace(/\s+/g,' ').slice(0,28).split('');
+  const output=document.getElementById('brailleOutput');
+  output.innerHTML='';
+  currentBraille='';
+
+  chars.forEach((ch,i)=>{
+    const cell=document.createElement('div');
+    cell.className='braille-cell';
+
+    let code=(ch.charCodeAt(0)+i)%63+1;
+    currentBraille+=String.fromCharCode(0x2800+code);
+
+    for(let b=0;b<6;b++){
+      const s=document.createElement('span');
+      if(code & (1<<b))s.className='on';
+      cell.appendChild(s);
+    }
+
+    output.appendChild(cell);
+  });
+
+  document.getElementById('step3').classList.add('active');
+  toast('تم التحويل إلى برايل');
+}
+
+function downloadFile(type){
+  if(!currentBraille){
+    toast('حوّل النص أولًا قبل التنزيل');
+    return;
+  }
+
+  const content = type==='txt' ? currentBraille : 'Baseerah Output\n\n'+currentBraille;
+  const blob=new Blob([content],{type:'text/plain'});
+  const a=document.createElement('a');
+
+  a.href=URL.createObjectURL(blob);
+  a.download='baseerah-output.'+(type==='pdf'?'txt':type);
+  a.click();
+
+  URL.revokeObjectURL(a.href);
+  toast('بدأ تنزيل الملف');
+}
+
+function sendFeedback(){
+  const name=document.getElementById('name')?.value.trim() || '';
+  const email=document.getElementById('email')?.value.trim() || '';
+  const type=document.getElementById('type')?.value || '';
+  const msg=document.getElementById('message')?.value.trim() || '';
+
+  if(!msg){
+    toast('اكتبي الملاحظة أولًا');
+    return;
+  }
+
+  const subject=encodeURIComponent('ملاحظة من موقع بصيرة - '+type);
+  const body=encodeURIComponent(
+    'الاسم: '+(name || 'غير مذكور')+'\n'+
+    'البريد الإلكتروني: '+(email || 'غير مذكور')+'\n'+
+    'نوع الملاحظة: '+type+'\n\n'+
+    'الملاحظة:\n'+msg
+  );
+
+  window.location.href='mailto:support@baseerah.com?subject='+subject+'&body='+body;
+  toast('سيتم فتح البريد لإرسال الملاحظة');
+}
+</script>
+
+</body>
+</html>
